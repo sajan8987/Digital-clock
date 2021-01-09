@@ -1,12 +1,20 @@
 html, body
 {
 	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 }
 
 body
 {
-  background: #FA5252;	
+	/* background-image: linear-gradient(to left , #7cc3ff , #5485cf); */
+	background: #cb2d3e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	
 }
 
 .container
@@ -21,13 +29,14 @@ body
 {
 	width:700px;
 	height: 500px;
-	/* border-radius: 50%; */
-	/*background: #FA5252;*/
+	
 	border-radius: 8px;
-    background: linear-gradient(315deg, #ff5858, #e14a4a);
-    box-shadow:  -5px -5px 8px #a03434, 
-             5px 5px 8px #ff7070;
+	background: #cb2d3e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+box-shadow:  5px 5px 10px #511219,
+-5px -5px 10px #ff4863;
 }
  .fst
 {
@@ -182,7 +191,7 @@ body
 .toggle
 {
 	position:absolute;
-	top: 12%;
+	top: 7%;
 	left: 91%;
 	transform: translate(-50%,-50%);
 }
@@ -252,11 +261,12 @@ body
 	  
 	  width: 350px;
 	  height: 350px;
-	  margin-left: 10rem;
+	  margin: auto;
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
-	  background: #fff;
+	  background: #fff url(clock.png);
+	  background-size: cover;
 	  border-radius: 50%;
 	  border: 20px solid #fff;
 	  box-shadow: inset 0 0 30px rgba(0, 0, 0, .1),
@@ -308,7 +318,40 @@ body
 	  position: absolute;
 	  width: 8px;
 	  height: 80px;
+	  margin-left: 4.777rem;
 	  background: #848484;
 	  z-index: 10;
 	  border-radius: 6px 6px 0 0;
   }
+  .mn::before
+  {
+	  content: '';
+	  position: absolute;
+	  width: 4px;
+	  height: 90px;
+	  margin-left: 5.8rem;
+	  background: #d6d6d6;
+	  z-index: 11;
+	  border-radius: 6px 6px 0 0;
+  }
+  .sc::before
+  {
+      content: '';
+	  position: absolute;
+	  width: 2px;
+	  height: 150px;
+	  margin-left: 7.1rem;
+	  background: #ff6767;
+	  z-index: 12;
+	  border-radius: 6px 6px 0 0;
+  }
+  .wrapper
+  {
+	width: 86%;
+	/* position: absolute; */
+    top: 50%;
+    left: 50%;
+	transform: translate(50px, 50px);
+	
+  }
+ 

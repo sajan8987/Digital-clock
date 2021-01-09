@@ -12,59 +12,63 @@
       <div class="box">
         <div class="toggle">
           <label class="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              data-toggle="toggle"
+              onclick="fonctionTest()" id="handle"
+            />
             <span class="slider round"></span>
           </label>
         </div>
-        <div class="row fst">
-          <!-- Hours -->
-          <div class="clock">
-            <div class="number" id="hours">00</div>
-            <div class="text">HOURS</div>
+        <div class="clk" id="clk">
+          <div class="row fst">
+            <!-- Hours -->
+            <div class="clock">
+              <div class="number" id="hours">00</div>
+              <div class="text">HOURS</div>
+            </div>
+            <!-- Minutes -->
+            <div class="clock">
+              <div class="number" id="minutes">00</div>
+              <div class="text">MINUTES</div>
+            </div>
+            <!-- Seconds -->
+            <div class="clock">
+              <div class="number" id="seconds">00</div>
+              <div class="text">SECONDS</div>
+            </div>
           </div>
-          <!-- Minutes -->
-          <div class="clock">
-            <div class="number" id="minutes">00</div>
-            <div class="text">MINUTES</div>
-          </div>
-          <!-- Seconds -->
-          <div class="clock">
-            <div class="number" id="seconds">00</div>
-            <div class="text">SECONDS</div>
-          </div>
-        </div>
 
-        <!-- date -->
-        <div class="date">
-          <div class="one" id="dat"></div>
-        </div>
-        <!-- month -->
-        <div class="date">
-          <div class="two" id="month"></div>
-        </div>
-        <!-- week -->
-        <div class="date">
-          <div class="three" id="week"></div>
-        </div>
-        <!-- year -->
-        <div class="date">
-          <div class="four" id="year"></div>
-        </div>
-        
-        <!-- <div class="analog">
-          <div class="hour">
-            <div class="hr" id="hr"></div>
+          <!-- date -->
+          <div class="date">
+            <div class="one" id="dat"></div>
           </div>
-          <div class="min">
-            <div class="mn" id="mn"></div>
+          <!-- month -->
+          <div class="date">
+            <div class="two" id="month"></div>
           </div>
-          <div class="sec">
-            <div class="sc" id="sc"></div>
+          <!-- week -->
+          <div class="date">
+            <div class="three" id="week"></div>
           </div>
-        </div> -->
-
-
-
+          <!-- year -->
+          <div class="date">
+            <div class="four" id="year"></div>
+          </div>
+        </div>
+        <div class="wrapper" id="wrap">
+          <div class="analog">
+            <div class="hour">
+              <div class="hr" id="hr"></div>
+            </div>
+            <div class="min">
+              <div class="mn" id="mn"></div>
+            </div>
+            <div class="sec">
+              <div class="sc" id="sc"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -130,7 +134,7 @@
 
         //date
         var dat = d.getDate();
-        if (dat <= 10) {
+        if (dat <= 9) {
           dat = "0" + dat;
         }
         document.getElementById("dat").innerHTML = dat;
@@ -138,6 +142,33 @@
         setTimeout(showTime, 1000);
       }
       showTime();
+
+      const deg = 6;
+      const hr = document.querySelector("#hr");
+      const mn = document.querySelector("#mn");
+      const sc = document.querySelector("#sc");
+      setInterval(() => {
+        let day = new Date();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * deg;
+        let ss = day.getSeconds() * deg;
+        hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+        mn.style.transform = `rotateZ(${mm}deg)`;
+        sc.style.transform = `rotateZ(${ss}deg)`;
+      });
+
+      function fonctionTest() {
+        var x = document.getElementById("wrap");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+       
+      }
+
+     
+      
     </script>
   </body>
 </html>
