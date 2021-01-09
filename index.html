@@ -1,93 +1,143 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Digital clock</title>
-	<link rel="stylesheet" type="text/css" href="dclock.css">
-	<!-- <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/segment7" type="text/css"/> -->
-	<!-- <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/segment7" type="text/css"/> -->
+  <head>
+    <title>Digital clock</title>
+    <link rel="stylesheet" type="text/css" href="dclock.css" />
+    <!-- <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/segment7" type="text/css"/> -->
+    <!-- <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/segment7" type="text/css"/> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="row fst">
+          <!-- Hours -->
+          <div class="clock">
+            <div class="number" id="hours">00</div>
+            <div class="text">HOURS</div>
+          </div>
+          <!-- Minutes -->
+          <div class="clock">
+            <div class="number" id="minutes">00</div>
+            <div class="text">MINUTES</div>
+          </div>
+          <!-- Seconds -->
+          <div class="clock">
+            <div class="number" id="seconds">00</div>
+            <div class="text">SECONDS</div>
+          </div>
+        </div>
 
-
-</head>
-<body>
-	<div class="container">
-		<div class="box">
-			<div class="row">
-				<!-- Hours -->
-				<div class="clock">
-					<div class="number" id="hours">00</div>
-					<div class="text">HOURS</div>
-				</div>
-				<!-- Minutes -->
-				<div class="clock">
-					<div class="number" id="minutes" >00</div>
-					<div class="text">MINUTES</div>
-				</div>
-				<!-- Seconds -->
-				<div class="clock">
-					<div class="number" id="seconds">00</div>
-					<div class="text">SECONDS</div>
-				</div>
-				 <!-- merideim -->
-				<!-- <div class="session">
-					<div class="merideim">AM</div>
-
-				</div> -->
-
-			</div>
-
-		</div>
-	</div>
-
-
-<script type="text/javascript">
-	function showTime()
-{
-		var d = new Date();
-
-	//hours
-	var hours =d.getHours();
-	if(hours <=9)
-	{
-		hours = "0"+hours;
-	}
-	document.getElementById("hours").innerHTML = hours;
-
-	//minutes
-	var minutes = d.getMinutes();
-	if(minutes < 10)
-	{
-		minutes = "0"+minutes;
-	}
-	document.getElementById("minutes").innerHTML = minutes;
-
-	//seconds
-	var seconds = d.getSeconds();
-	if(seconds < 10)
-	{
-		seconds = "0"+seconds;
-	}
-	document.getElementById("seconds").innerHTML = seconds;
-	//merideim
-	var session 
- 
-   setTimeout(showTime, 1000);
-}
-showTime();
-
-// setInterval(showTime, 1000);
-
-	
+        <!-- date -->
+        <div class="date">
+          <div class="one" id="dat"></div>
+        </div>
+        <!-- month -->
+        <div class="date">
+          <div class="two" id="month"></div>
+        </div>
+        <!-- week -->
+        <div class="date">
+          <div class="three" id="week"></div>
+        </div>
+        <!-- year -->
+        <div class="date">
+          <div class="four" id="year"></div>
+        </div>
+        
+        <!-- <div class="analog">
+          <div class="hour">
+            <div class="hr" id="hr"></div>
+          </div>
+          <div class="min">
+            <div class="mn" id="mn"></div>
+          </div>
+          <div class="sec">
+            <div class="sc" id="sc"></div>
+          </div>
+        </div> -->
 
 
 
+      </div>
+    </div>
 
-</script>
+    <script type="text/javascript">
+      function showTime() {
+        var d = new Date();
 
+        //hours
+        var hours = d.getHours();
+        if (hours <= 9) {
+          hours = "0" + hours;
+        }
+        document.getElementById("hours").innerHTML = hours;
 
+        //minutes
+        var minutes = d.getMinutes();
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        document.getElementById("minutes").innerHTML = minutes;
 
+        //seconds
+        var seconds = d.getSeconds();
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+        document.getElementById("seconds").innerHTML = seconds;
+        //year
+        var year = d.getFullYear();
+        if (year < 1000) {
+          year += 1900;
+        }
+        document.getElementById("year").innerHTML = year;
+        //month
+        var month = new Array();
+        month[0] = "JAN";
+        month[1] = "FEB";
+        month[2] = "MAR";
+        month[3] = "APR";
+        month[4] = "MAY";
+        month[5] = "JUN";
+        month[6] = "JUL";
+        month[7] = "AUG";
+        month[8] = "SEP";
+        month[9] = "OCT";
+        month[10] = "NOV";
+        month[11] = "DEC";
+        var m = month[d.getMonth()];
+        document.getElementById("month").innerHTML = m;
 
+        //weeks
+        var week = new Array();
+        week[0] = "SUNDAY";
+        week[1] = "MONDAY";
+        week[2] = "TUESDAY";
+        week[3] = "WEDNESDAY";
+        week[4] = "THURSDAY";
+        week[5] = "FRIDAY";
+        week[6] = "SATURDAY";
 
+        var w = week[d.getDay()];
+        document.getElementById("week").innerHTML = w;
 
-</body>
+        //date
+        var dat = d.getDate();
+        if (dat <= 10) {
+          dat = "0" + dat;
+        }
+        document.getElementById("dat").innerHTML = dat;
+
+        setTimeout(showTime, 1000);
+      }
+      showTime();
+    </script>
+  </body>
 </html>
